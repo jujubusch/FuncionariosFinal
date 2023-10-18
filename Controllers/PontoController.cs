@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjetoFuncionarios.Models;
 
-namespace FuncionariosFinal.Controllers
+namespace ProjetoFuncionarios.Controllers
 {
     public class PontoController : Controller
     {
@@ -47,7 +47,7 @@ namespace FuncionariosFinal.Controllers
         // GET: Ponto/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id");
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace FuncionariosFinal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario", ponto.FuncionarioId);
             return View(ponto);
         }
 
@@ -81,7 +81,7 @@ namespace FuncionariosFinal.Controllers
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario", ponto.FuncionarioId);
             return View(ponto);
         }
 
@@ -117,7 +117,7 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario", ponto.FuncionarioId);
             return View(ponto);
         }
 
@@ -154,14 +154,14 @@ namespace FuncionariosFinal.Controllers
             {
                 _context.Ponto.Remove(ponto);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PontoExists(int id)
         {
-          return (_context.Ponto?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Ponto?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
