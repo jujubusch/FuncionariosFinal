@@ -7,18 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Escala\**" />
-    <Content Remove="Views\Escala\**" />
-    <EmbeddedResource Remove="Views\Escala\**" />
-    <None Remove="Views\Escala\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Controllers\EscalaController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="wwwroot\css\Escala.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Escala\Create.cshtml" />
+    <None Include="Views\Escala\Delete.cshtml" />
+    <None Include="Views\Escala\Details.cshtml" />
+    <None Include="Views\Escala\Edit.cshtml" />
+    <None Include="Views\Escala\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
