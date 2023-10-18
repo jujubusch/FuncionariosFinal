@@ -10,6 +10,11 @@ namespace ProjetoFuncionarios.Models
         [Display(Name = "Código da Escala")]
         public int Id { get; set; }
 
+        [Column("DescricaoEscala")]
+        [Display(Name = "Descrição da Escala")]
+
+        public string DescricaoEscala { get; set; } = string.Empty;
+
         [Column("HorarioEntrada")]
         [Display(Name = "Horário de Entrada")]
         public string HorarioEntrada { get; set; } = string.Empty;

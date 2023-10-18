@@ -47,7 +47,7 @@ namespace FuncionariosFinal.Controllers
         // GET: Funcionario/Create
         public IActionResult Create()
         {
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id");
+            ViewData["DescricaoCargo"] = new SelectList(_context.Cargo, "Id", "DecricaoCargo");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace FuncionariosFinal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id", funcionario.CargoId);
+            ViewData["DescricaoCargo"] = new SelectList(_context.Cargo, "Id", "DescricaoCargo", funcionario.CargoId);
             return View(funcionario);
         }
 
@@ -81,7 +81,7 @@ namespace FuncionariosFinal.Controllers
             {
                 return NotFound();
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id", funcionario.CargoId);
+            ViewData["DecricaoCargo"] = new SelectList(_context.Cargo, "Id", "DecricaoCargo", funcionario.CargoId);
             return View(funcionario);
         }
 
@@ -117,7 +117,7 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id", funcionario.CargoId);
+            ViewData["DescricaoCargo"] = new SelectList(_context.Cargo, "Id", "DescricaoCargo", funcionario.CargoId);
             return View(funcionario);
         }
 

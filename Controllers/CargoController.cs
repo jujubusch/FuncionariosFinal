@@ -64,7 +64,7 @@ namespace FuncionariosFinal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "EscalaId", cargo.EscalaId);
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "Id", cargo.EscalaId);
             return View(cargo);
         }
 
@@ -81,7 +81,7 @@ namespace FuncionariosFinal.Controllers
             {
                 return NotFound();
             }
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "EscalaId", cargo.EscalaId);
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "Id", cargo.EscalaId);
             return View(cargo);
         }
 
@@ -117,7 +117,7 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "EscalaId", cargo.EscalaId);
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "Id", cargo.EscalaId);
             return View(cargo);
         }
 
