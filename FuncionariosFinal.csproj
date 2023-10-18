@@ -11,14 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Escala\Create.cshtml" />
-    <None Include="Views\Escala\Delete.cshtml" />
-    <None Include="Views\Escala\Details.cshtml" />
-    <None Include="Views\Escala\Edit.cshtml" />
-    <None Include="Views\Escala\Index.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
       <PrivateAssets>all</PrivateAssets>

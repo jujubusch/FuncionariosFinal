@@ -55,7 +55,7 @@ namespace FuncionariosFinal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HorarioEntrada,IntervaloSaida,IntervaloRetorno,HorarioSaida")] Escala escala)
+        public async Task<IActionResult> Create([Bind("Id,DescricaoEscala,HorarioEntrada,IntervaloSaida,IntervaloRetorno,HorarioSaida")] Escala escala)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace FuncionariosFinal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,HorarioEntrada,IntervaloSaida,IntervaloRetorno,HorarioSaida")] Escala escala)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DescricaoEscala,HorarioEntrada,IntervaloSaida,IntervaloRetorno,HorarioSaida")] Escala escala)
         {
             if (id != escala.Id)
             {
