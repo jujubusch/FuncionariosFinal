@@ -10,9 +10,9 @@ namespace ProjetoFuncionarios.Models
         [Display(Name = "Código do Cargo")]
         public int Id { get; set; }
 
-        [Column("DecricaoCargo")]
+        [Column("DescricaoCargo")]
         [Display(Name = "Descrição do Cargo")]
-        public string DecricaoCargo { get; set; } = string.Empty;
+        public string DescricaoCargo { get; set; } = string.Empty;
 
         [Column("SalarioCargo")]
         [Display(Name = "Salário do Cargo")]
