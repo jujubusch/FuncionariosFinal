@@ -3,8 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoFuncionarios.Models
 {
-    [Table("Cargo")]
-    public class Cargo
+    public class Cargo 
     {
         [Column("CargoId")]
         [Display(Name = "Código do Cargo")]
