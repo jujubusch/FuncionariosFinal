@@ -56,7 +56,7 @@ namespace FuncionariosFinal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DecricaoCargo,SalarioCargo,EscalaId")] Cargo cargo)
+        public async Task<IActionResult> Create([Bind("Id,DescricaoCargo,SalarioCargo,EscalaId")] Cargo cargo)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace FuncionariosFinal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DecricaoCargo,SalarioCargo,EscalaId")] Cargo cargo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DescricaoCargo,SalarioCargo,EscalaId")] Cargo cargo)
         {
             if (id != cargo.Id)
             {
