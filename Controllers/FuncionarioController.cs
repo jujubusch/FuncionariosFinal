@@ -9,90 +9,90 @@ using ProjetoFuncionarios.Models;
 
 namespace FuncionariosFinal.Controllers
 {
-    public class PontoController : Controller
+    public class FuncionarioController : Controller
     {
         private readonly Contexto _context;
 
-        public PontoController(Contexto context)
+        public FuncionarioController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: Ponto
+        // GET: Funcionario
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Ponto.Include(p => p.Funcionario);
+            var contexto = _context.Funcionário.Include(f => f.Cargo);
             return View(await contexto.ToListAsync());
         }
 
-        // GET: Ponto/Details/5
+        // GET: Funcionario/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Ponto == null)
+            if (id == null || _context.Funcionário == null)
             {
                 return NotFound();
             }
 
-            var ponto = await _context.Ponto
-                .Include(p => p.Funcionario)
+            var funcionario = await _context.Funcionário
+                .Include(f => f.Cargo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ponto == null)
+            if (funcionario == null)
             {
                 return NotFound();
             }
 
-            return View(ponto);
+            return View(funcionario);
         }
 
-        // GET: Ponto/Create
+        // GET: Funcionario/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id");
+            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id");
             return View();
         }
 
-        // POST: Ponto/Create
+        // POST: Funcionario/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HorarioEntrada,SaidaAlmoco,VoltaAlmoco,HorarioSaida,Data,FuncionarioId")] Ponto ponto)
+        public async Task<IActionResult> Create([Bind("Id,NomeFuncionario,CargoId")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ponto);
+                _context.Add(funcionario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
-            return View(ponto);
+            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id", funcionario.CargoId);
+            return View(funcionario);
         }
 
-        // GET: Ponto/Edit/5
+        // GET: Funcionario/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Ponto == null)
+            if (id == null || _context.Funcionário == null)
             {
                 return NotFound();
             }
 
-            var ponto = await _context.Ponto.FindAsync(id);
-            if (ponto == null)
+            var funcionario = await _context.Funcionário.FindAsync(id);
+            if (funcionario == null)
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
-            return View(ponto);
+            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id", funcionario.CargoId);
+            return View(funcionario);
         }
 
-        // POST: Ponto/Edit/5
+        // POST: Funcionario/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,HorarioEntrada,SaidaAlmoco,VoltaAlmoco,HorarioSaida,Data,FuncionarioId")] Ponto ponto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeFuncionario,CargoId")] Funcionario funcionario)
         {
-            if (id != ponto.Id)
+            if (id != funcionario.Id)
             {
                 return NotFound();
             }
@@ -101,12 +101,12 @@ namespace FuncionariosFinal.Controllers
             {
                 try
                 {
-                    _context.Update(ponto);
+                    _context.Update(funcionario);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PontoExists(ponto.Id))
+                    if (!FuncionarioExists(funcionario.Id))
                     {
                         return NotFound();
                     }
@@ -117,51 +117,51 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
-            return View(ponto);
+            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "Id", funcionario.CargoId);
+            return View(funcionario);
         }
 
-        // GET: Ponto/Delete/5
+        // GET: Funcionario/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Ponto == null)
+            if (id == null || _context.Funcionário == null)
             {
                 return NotFound();
             }
 
-            var ponto = await _context.Ponto
-                .Include(p => p.Funcionario)
+            var funcionario = await _context.Funcionário
+                .Include(f => f.Cargo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ponto == null)
+            if (funcionario == null)
             {
                 return NotFound();
             }
 
-            return View(ponto);
+            return View(funcionario);
         }
 
-        // POST: Ponto/Delete/5
+        // POST: Funcionario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Ponto == null)
+            if (_context.Funcionário == null)
             {
-                return Problem("Entity set 'Contexto.Ponto'  is null.");
+                return Problem("Entity set 'Contexto.Funcionário'  is null.");
             }
-            var ponto = await _context.Ponto.FindAsync(id);
-            if (ponto != null)
+            var funcionario = await _context.Funcionário.FindAsync(id);
+            if (funcionario != null)
             {
-                _context.Ponto.Remove(ponto);
+                _context.Funcionário.Remove(funcionario);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PontoExists(int id)
+        private bool FuncionarioExists(int id)
         {
-          return (_context.Ponto?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Funcionário?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
