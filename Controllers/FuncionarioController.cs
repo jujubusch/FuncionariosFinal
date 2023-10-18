@@ -47,6 +47,7 @@ namespace FuncionariosFinal.Controllers
         // GET: Funcionario/Create
         public IActionResult Create()
         {
+            ViewData["DescricaoCargo"] = new SelectList(_context.Cargo, "Id", "DescricaoCargo");
             ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "DescricaoCargo");
             return View();
         }
@@ -82,6 +83,7 @@ namespace FuncionariosFinal.Controllers
                 return NotFound();
             }
             ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "DescricaoCargo", funcionario.CargoId);
+            ViewData["DescricaoCargo"] = new SelectList(_context.Cargo, "Id", "DescricaoCargo", funcionario.CargoId);
             return View(funcionario);
         }
 
