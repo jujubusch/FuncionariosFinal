@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
     (options => options.UseSqlServer("Data Source=SP-1491006\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
 
 /*builder.Services.AddDbContext<Contexto> //Pedro Lucas
-    (options => options.UseSqlServer("Data Source=SP-1491020\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
+    (options => options.UseSqlServer("Data Source=SP-1491032\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
 
 /*builder.Services.AddDbContext<Contexto> //Cauã
     (options => options.UseSqlServer("Data Source=SP-1491020\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
