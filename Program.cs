@@ -15,8 +15,8 @@ builder.Services.AddControllersWithViews();
 /*builder.Services.AddDbContext<Contexto> //Pedro Lucas
     (options => options.UseSqlServer("Data Source=SP-1491032\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
 
-/*builder.Services.AddDbContext<Contexto> //Cauã
-    (options => options.UseSqlServer("Data Source=SP-1491012\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
+builder.Services.AddDbContext<Contexto> //Cauã
+    (options => options.UseSqlServer("Data Source=SP-1491012\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));
 
 var app = builder.Build();
 
