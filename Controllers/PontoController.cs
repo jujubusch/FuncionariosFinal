@@ -47,7 +47,7 @@ namespace FuncionariosFinal.Controllers
         // GET: Ponto/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id");
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "FuncionarioId");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace FuncionariosFinal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "FuncionarioId", ponto.FuncionarioId);
             return View(ponto);
         }
 
@@ -81,7 +81,7 @@ namespace FuncionariosFinal.Controllers
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "FuncionarioId", ponto.FuncionarioId);
             return View(ponto);
         }
 
@@ -117,7 +117,7 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "Id", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "FuncionarioId", ponto.FuncionarioId);
             return View(ponto);
         }
 
