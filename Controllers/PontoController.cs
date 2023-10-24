@@ -19,10 +19,25 @@ namespace FuncionariosFinal.Controllers
         }
 
         // GET: Ponto
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            var contexto = _context.Ponto.Include(p => p.Funcionario);
-            return View(await contexto.ToListAsync());
+
+            if (string.IsNullOrWhiteSpace(pesquisa))
+            {
+                return _context.Ponto != null ?
+                      View(await _context.Ponto.ToListAsync()) :
+                      Problem("Entity set 'Contexto.Ponto'  is null.");
+            }
+            else
+            {
+                var pessoa =
+                    _context.Ponto
+                    .Where(x => x.Funcionario.NomeFuncionario.Contains(pesquisa))
+                    .OrderBy(x => x.FuncionarioId);
+
+                return View(pessoa);
+            }
+
         }
 
         // GET: Ponto/Details/5
@@ -64,7 +79,7 @@ namespace FuncionariosFinal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario" );
             return View(ponto);
         }
 
@@ -81,7 +96,7 @@ namespace FuncionariosFinal.Controllers
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario" );
             return View(ponto);
         }
 
@@ -117,7 +132,7 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionário, "Id", "NomeFuncionario" );
             return View(ponto);
         }
 

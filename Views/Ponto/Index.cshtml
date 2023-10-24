@@ -7,6 +7,18 @@
 <div class="TextEscalaeBut">
     <h2>Ponto</h2>
 
+<p>
+    <a asp-action="Create">Criar um novo</a>
+</p>
+<div>
+    @using (Html.BeginForm("Index", "Ponto", FormMethod.Get))
+    {
+        <p>
+            Digite aqui sua pesquisa: @Html.TextBox("Pesquisa")
+            <input type="submit" value="Pesquisar">
+        </p>
+    }
+</div>
     <p>
         <a asp-action="Create"><img class="But-add" src="~/Imagens/icon-add.png" /></a>
     </p>

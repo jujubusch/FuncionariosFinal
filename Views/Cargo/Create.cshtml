@@ -1,6 +1,8 @@
-﻿<head> href="~/css/Cargo.css" asp-append-version="true" />
+<<<<<<< HEAD
+﻿<head>
+    <link rel="stylesheet" href="~/css/Cargo.css" asp-append-version="true" />
 </head>
-@model FuncionariosFinal.Models.Cargo
+@model Cargo
 
 @{
     ViewData["Title"] = "Create";
@@ -42,3 +44,50 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+=======
+﻿<head>
+ href="~/css/Cargo.css" asp-append-version="true" />
+</head>
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Adicionar Cargo</h2>
+
+<h4>Cargo</h4>
+<hr />
+<div class="row" >
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DescricaoCargo" class="control-label"></label>
+                <input asp-for="DescricaoCargo" class="form-control" />
+                <span asp-validation-for="DescricaoCargo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalarioCargo" class="control-label"></label>
+                <input asp-for="SalarioCargo" class="form-control" />
+                <span asp-validation-for="SalarioCargo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EscalaId" class="control-label"></label>
+                <select asp-for="EscalaId" class ="form-control" asp-items="ViewBag.EscalaId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+>>>>>>> f3aec19ae6d71b492092a359698034974b54d76d
