@@ -30,5 +30,8 @@ namespace ProjetoFuncionarios.Models
         [Column("HorarioSaida")]
         [Display(Name = "Horário de Saída")]
         public string HorarioSaida { get; set; } = string.Empty;
+
+        [NotMapped]
+        public string DescricaoHorario { get { return HorarioEntrada + " - " + HorarioSaida; } }
     }
 }
