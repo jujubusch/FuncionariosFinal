@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,11 +15,7 @@ namespace FuncionariosFinal.Controllers
         }
 
         // GET: Ponto
-        public async Task<IActionResult> Index()
-        {
-            var contexto = _context.Ponto.Include(p => p.Funcionario);
-            return View(await contexto.ToListAsync());
-        }
+
 
         // GET: Ponto/Details/5
         public async Task<IActionResult> Details(int? id)
