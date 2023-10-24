@@ -15,5 +15,15 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #C0E5FA;
+    background-color: #EBEBEB;
 }
+container-fluid{
+    border-block-color: aquamarine;
+}
+.logo{
+    margin-top: 20px;
+    width: 140px;
+    height: 70px
+    
+}
+
