@@ -1,14 +1,17 @@
-﻿@model ProjetoFuncionarios.Models.Cargo
+﻿<head>
+    <link rel="stylesheet" href="~/css/Cargo.css" asp-append-version="true" />
+</head>
+@model ProjetoFuncionarios.Models.Cargo
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Criar</h1>
+<h2>Adicionar Cargo</h2>
 
 <h4>Cargo</h4>
 <hr />
-<div class="row">
+<div class="row" >
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

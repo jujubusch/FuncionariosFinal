@@ -18,13 +18,29 @@ namespace FuncionariosFinal.Controllers
             _context = context;
         }
 
-        // GET: Escala
-        public async Task<IActionResult> Index()
+
+        // GET: Escala 
+        public async Task<IActionResult> Index(string pesquisa)
         {
-              return _context.Escala != null ? 
-                          View(await _context.Escala.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Escala'  is null.");
+
+            if (string.IsNullOrWhiteSpace(pesquisa))
+            {
+                return _context.Escala != null ?
+                      View(await _context.Escala.ToListAsync()) :
+                      Problem("Entity set 'Contexto.Produto'  is null.");
+            }
+            else
+            {
+                var pessoa =
+                    _context.Escala
+                    .Where(x => x.DescricaoHorario.Contains(pesquisa))
+                    .OrderBy(x => x.DescricaoHorario);
+
+                return View(pessoa);
+            }
+
         }
+        
 
         // GET: Escala/Details/5
         public async Task<IActionResult> Details(int? id)
