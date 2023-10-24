@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProjetoFuncionarios.Models;
+using FuncionariosFinal.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +9,8 @@ builder.Services.AddControllersWithViews();
 /*builder.Services.AddDbContext<Contexto> //Ana Júlia Busch
     (options => options.UseSqlServer("Data Source=SP-1491020\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
 
-builder.Services.AddDbContext<Contexto> //Kauan
-    (options => options.UseSqlServer("Data Source=SP-1491006\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));
+/*builder.Services.AddDbContext<Contexto> //Kauan
+    (options => options.UseSqlServer("Data Source=SP-1491006\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
 
 /*builder.Services.AddDbContext<Contexto> //Pedro Lucas
     (options => options.UseSqlServer("Data Source=SP-1491032\\SQLSENAI;Initial Catalog = FuncionariosFinal;Integrated Security = True;TrustServerCertificate = True"));*/
