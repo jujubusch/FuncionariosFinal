@@ -12,5 +12,6 @@ namespace FuncionariosFinal.Models
         public DbSet<Escala>? Escala { get; set; }
         public DbSet<Cargo>? Cargo { get; set; }
         public DbSet<Ponto> Ponto { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
     }
 }

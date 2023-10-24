@@ -1,7 +1,7 @@
 ﻿<head>
     <link rel="stylesheet" href="~/css/Cargo.css" asp-append-version="true" />
 </head>
-@model IEnumerable<ProjetoFuncionarios.Models.Cargo>
+@model IEnumerable<Cargo>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,6 +12,15 @@
 <p>
     <a asp-action="Create">Criar um novo</a>
 </p>
+<div>
+    @using (Html.BeginForm("Index", "Cargo", FormMethod.Get))
+    {
+            <p>
+            @Html.TextBox("pesquisa", "", new{ @class = "pesquisaCargo", placeholder = "Digite sua pesquisa" })
+                <input type="submit" value="Pesquisar"/>
+            </p>
+    }
+</div>
 <table class="table">
     <thead>
         <tr>
