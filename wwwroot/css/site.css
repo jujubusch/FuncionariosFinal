@@ -21,7 +21,7 @@ container-fluid{
     border-block-color: aquamarine;
 }
 .logo{
-    margin-top: 20px;
+    margin-top: 1px;
     width: 140px;
     height: 70px
     
@@ -30,5 +30,15 @@ container-fluid{
 .pesquisaCargo {
     border-radius: 1px solid black;
 }
+.But-BarraDePesquisa {
+    background-color: #2FC298;
+    color: white;
+}
+.But-add{
+    width: 47px;
+    height: 47px;
 
-
+}
+.TextEscalaeBut{
+    display:flex;
+}
