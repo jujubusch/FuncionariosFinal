@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FuncionariosFinal.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProjetoFuncionarios.Models;
 
 namespace FuncionariosFinal.Controllers
 {
@@ -29,18 +29,13 @@ namespace FuncionariosFinal.Controllers
             }
             else
             {
-                var pessoa =
+                var funcionario =
                     _context.Funcionario
                     .Where(x => x.NomeFuncionario.Contains(pesquisa))
                     .OrderBy(x => x.NomeFuncionario);
 
-                return View(pessoa);
+                return View(funcionario);
             }
-        }
-
-        private ObjectResult View(object value)
-        {
-            throw new NotImplementedException();
         }
 
         // GET: Funcionario/Details/5

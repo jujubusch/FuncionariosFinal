@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjetoFuncionarios.Models
+namespace FuncionariosFinal.Models
 {
     [Table("Funcionario")]
     public class Funcionario
