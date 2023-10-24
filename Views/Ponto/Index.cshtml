@@ -10,12 +10,18 @@
         <a asp-action="Create"><img class="But-add" src="~/Imagens/icon-add.png" /></a>
     </p>
 </div>
-
 <div>
     @using (Html.BeginForm("Index", "Ponto", FormMethod.Get))
     {
+        <p>
+            @Html.TextBox("pesquisa", "", new{ @class = "pesquisaCargo", placeholder = "Digite sua pesquisa" })
+            <input class=" But-BarraDePesquisa" type="submit" value="Pesquisar" />
+        </p>
 
     }
+
+</div>
+   
 
 <table class="table">
     <thead>
@@ -43,8 +49,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
+            <tr>
+                <td>
                 @Html.DisplayFor(modelItem => item.HorarioEntrada)
             </td>
             <td>
@@ -60,7 +66,7 @@
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioId)
+                @Html.DisplayFor(modelItem => item.Funcionario.NomeFuncionario)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |

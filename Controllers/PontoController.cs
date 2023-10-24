@@ -24,18 +24,19 @@ namespace FuncionariosFinal.Controllers
 
             if (string.IsNullOrWhiteSpace(pesquisa))
             {
-                return _context.Ponto != null ?
-                      View(await _context.Ponto.ToListAsync()) :
+                return _context.Ponto.Include(x => x.Funcionario) != null ?
+                      View(await _context.Ponto.Include( x => x.Funcionario ).ToListAsync()) :
                       Problem("Entity set 'Contexto.Ponto'  is null.");
             }
             else
             {
-                var pessoa =
+                var ponto =
                     _context.Ponto
+                    .Include(x => x.Funcionario)
                     .Where(x => x.Funcionario.NomeFuncionario.Contains(pesquisa))
                     .OrderBy(x => x.FuncionarioId);
 
-                return View(pessoa);
+                return View(ponto);
             }
 
         }

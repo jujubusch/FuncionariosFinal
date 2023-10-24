@@ -11,6 +11,19 @@
         <a asp-action="Create"><img class="But-add" src="~/Imagens/icon-add.png" /></a>
     </p>
 </div>
+
+<div>
+    @using (Html.BeginForm("Index", "Ponto", FormMethod.Get))
+    {
+        <p>
+            @Html.TextBox("pesquisa", "", new{ @class = "pesquisaCargo", placeholder = "Digite sua pesquisa" })
+            <input class=" But-BarraDePesquisa" type="submit" value="Pesquisar" />
+        </p>
+
+    }
+
+</div>
+
 <table class="table">
     <thead>
         <tr>

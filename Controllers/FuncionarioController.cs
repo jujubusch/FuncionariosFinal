@@ -23,14 +23,15 @@ namespace FuncionariosFinal.Controllers
         {
             if (string.IsNullOrWhiteSpace(pesquisa))
             {
-                return _context.Funcionario != null ?
-                    View(await _context.Funcionario.ToListAsync()) :
+                return _context.Funcionario.Include(x => x.Cargo) != null ?
+                    View(await _context.Funcionario.Include(x => x.Cargo).ToListAsync()) :
                     Problem("Entity set 'Contexto.Cargo'  is null.");
             }
             else
             {
                 var funcionario =
                     _context.Funcionario
+                    .Include(x => x.Cargo)
                     .Where(x => x.NomeFuncionario.Contains(pesquisa))
                     .OrderBy(x => x.NomeFuncionario);
 
