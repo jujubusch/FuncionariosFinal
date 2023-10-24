@@ -1,6 +1,5 @@
 using FuncionariosFinal.Models;
 using Microsoft.EntityFrameworkCore;
-using ProjetoFuncionarios.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
