@@ -25,5 +25,10 @@ container-fluid{
     width: 140px;
     height: 70px
     
+  
 }
+.pesquisaCargo {
+    border-radius: 1px solid black;
+}
+
 

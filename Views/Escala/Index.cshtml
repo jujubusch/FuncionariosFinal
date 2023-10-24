@@ -13,7 +13,7 @@
     @using (Html.BeginForm("Index", "Esacala", FormMethod.Get))
     {
         <p>
-            Digite aqui sua pesquisa: @Html.TextBox("pesquisa")
+            Digite aqui sua pesquisa: @Html.TextBox("pesquisa", "", new{ @class = "pesquisaCargo", placeholder = "Digite sua pesquisa" })
             <input type="submit" value="Pesquisar" />
         </p>
     }
