@@ -19,11 +19,7 @@ namespace FuncionariosFinal.Controllers
         }
 
         // GET: Ponto
-        public async Task<IActionResult> Index()
-        {
-            var contexto = _context.Ponto.Include(p => p.Funcionario);
-            return View(await contexto.ToListAsync());
-        }
+
 
         // GET: Ponto/Details/5
         public async Task<IActionResult> Details(int? id)

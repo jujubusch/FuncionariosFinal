@@ -19,10 +19,23 @@ namespace FuncionariosFinal.Controllers
         }
 
         // GET: Funcionario
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            var contexto = _context.Funcionário.Include(f => f.Cargo);
-            return View(await contexto.ToListAsync());
+            if (string.IsNullOrWhiteSpace(pesquisa))
+            {
+                return _context.Funcionario != null ?
+                    View(await _context.Funcionario.ToListAsync()) :
+                    Problem("Entity set 'Contexto.Cargo'  is null.");
+            }
+            else
+            {
+                var funcionario =
+                    _context.Funcionario
+                    .Where(x => x.NomeFuncionario.Contains(pesquisa))
+                    .OrderBy(x => x.NomeFuncionario);
+
+                return View(funcionario);
+            }
         }
 
         // GET: Funcionario/Details/5
