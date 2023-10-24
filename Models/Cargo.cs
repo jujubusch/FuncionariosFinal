@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjetoFuncionarios.Models
+namespace FuncionariosFinal.Models
 {
-    public class Cargo 
+    public class Cargo
     {
         [Column("CargoId")]
         [Display(Name = "Código do Cargo")]

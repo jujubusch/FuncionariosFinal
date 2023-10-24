@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ProjetoFuncionarios.Models
+namespace FuncionariosFinal.Models
 {
     public class Contexto : DbContext
     {
@@ -12,5 +12,6 @@ namespace ProjetoFuncionarios.Models
         public DbSet<Escala>? Escala { get; set; }
         public DbSet<Cargo>? Cargo { get; set; }
         public DbSet<Ponto> Ponto { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjetoFuncionarios.Models.Funcionario>
+﻿@model IEnumerable<FuncionariosFinal.Models.Funcionario>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,7 +9,6 @@
 <p>
     <a asp-action="Create">Criar um novo</a>
 </p>
-
 <table class="table">
     <thead>
         <tr>
@@ -32,8 +31,8 @@
                 @Html.DisplayFor(modelItem => item.Cargo.DescricaoCargo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> 
                 <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
             </td>
         </tr>
