@@ -12,5 +12,6 @@ namespace ProjetoFuncionarios.Models
         public DbSet<Escala>? Escala { get; set; }
         public DbSet<Cargo>? Cargo { get; set; }
         public DbSet<Ponto> Ponto { get; set; }
+        public IEnumerable<object> Funcionario { get; internal set; }
     }
 }
