@@ -18,12 +18,29 @@ namespace FuncionariosFinal.Controllers
             _context = context;
         }
 
+
         // GET: Cargo
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            var contexto = _context.Cargo.Include(c => c.Escala);
-            return View(await contexto.ToListAsync());
+
+            if (string.IsNullOrWhiteSpace(pesquisa))
+            {
+                return _context.Cargo != null ?
+                      View(await _context.Cargo.ToListAsync()) :
+                      Problem("Entity set 'Contexto.Produto'  is null.");
+            }
+            else
+            {
+                var pessoa =
+                    _context.Cargo
+                    .Where(x => x.DescricaoCargo.Contains(pesquisa))
+                    .OrderBy(x => x.DescricaoCargo);
+
+                return View(pessoa);
+            }
+
         }
+      
 
         // GET: Cargo/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -47,7 +64,7 @@ namespace FuncionariosFinal.Controllers
         // GET: Cargo/Create
         public IActionResult Create()
         {
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoEscala");
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoHorario");
             return View();
         }
 
@@ -64,7 +81,7 @@ namespace FuncionariosFinal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoEscala", cargo.EscalaId);
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoHorario", cargo.EscalaId);
             return View(cargo);
         }
 
@@ -81,7 +98,7 @@ namespace FuncionariosFinal.Controllers
             {
                 return NotFound();
             }
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoEscala", cargo.EscalaId);
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoHorario", cargo.EscalaId);
             return View(cargo);
         }
 
@@ -117,7 +134,7 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoEscala", cargo.EscalaId);
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoHorario", cargo.EscalaId);
             return View(cargo);
         }
 
