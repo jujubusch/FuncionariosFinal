@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FuncionariosFinal.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProjetoFuncionarios.Models;
 
 namespace FuncionariosFinal.Controllers
 {
@@ -25,14 +25,15 @@ namespace FuncionariosFinal.Controllers
 
             if (string.IsNullOrWhiteSpace(pesquisa))
             {
-                return _context.Cargo != null ?
-                      View(await _context.Cargo.ToListAsync()) :
+                return _context.Cargo.Include(x=> x.Escala) != null ?
+                      View(await _context.Cargo.Include(x => x.Escala).ToListAsync()) :
                       Problem("Entity set 'Contexto.Produto'  is null.");
             }
             else
             {
                 var pessoa =
                     _context.Cargo
+                    .Include(x => x.Escala)
                     .Where(x => x.DescricaoCargo.Contains(pesquisa))
                     .OrderBy(x => x.DescricaoCargo);
 
@@ -134,7 +135,7 @@ namespace FuncionariosFinal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "DescricaoHorario", cargo.EscalaId);
+            ViewData["EscalaId"] = new SelectList(_context.Escala, "Id", "EscalaId", cargo.EscalaId);
             return View(cargo);
         }
 

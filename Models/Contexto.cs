@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ProjetoFuncionarios.Models
+namespace FuncionariosFinal.Models
 {
     public class Contexto : DbContext
     {
